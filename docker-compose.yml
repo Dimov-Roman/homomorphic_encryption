@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  party1:
+    build: .
+    container_name: mpc_party1
+    command: python party1.py
+    environment:
+      - MASTER_ADDR=party1
+      - MASTER_PORT=29500
+      - WORLD_SIZE=2
+      - RANK=0
+    volumes:
+      - ./shared:/shared
+    networks:
+      - mpc_network
+    depends_on:
+      - party2
+
+  party2:
+    build: .
+    container_name: mpc_party2
+    command: python party2.py
+    environment:
+      - MASTER_ADDR=party1
+      - MASTER_PORT=29500
+      - WORLD_SIZE=2
+      - RANK=1
+    volumes:
+      - ./shared:/shared
+    networks:
+      - mpc_network
+
+networks:
+  mpc_network:
+    driver: bridge
