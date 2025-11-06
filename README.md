@@ -199,39 +199,10 @@ z₂ = c₂ + d×b₂ + e×a₂ + d×e
 
 # 3. Результат: z₁ + z₂ = (x₁+x₂) × (y₁+y₂)
 ```
+Лицензия
+Этот проект предоставляется в образовательных целях.
 
-## Устранение неполадок
+Автор
+Dimov Roman
 
-### Контейнеры не запускаются
-```bash
-# Проверить логи
-docker-compose logs
-
-# Пересобрать с нуля
-docker-compose down
-docker-compose build --no-cache
-docker-compose up
-```
-
-### Ошибки коммуникации
-- Убедитесь, что порт 29500 не занят
-- Проверьте, что Docker сеть создана корректно
-
-### Файлы не создаются
-- Проверьте права доступа к директории `shared/`
-- Убедитесь, что volume смонтирован корректно в docker-compose.yml
-
-## Производительность
-
-Для конфигурации по умолчанию (PAILLIER_KEY_SIZE=2048, 10 троек):
-- Время генерации: ~30-60 секунд
-- Размер ключа: 2048 бит
-- Размер зашифрованного значения: ~512 байт
-
-## Литература
-
-1. D. Beaver, "Efficient Multiparty Protocols Using Circuit Randomization" (1991)
-2. P. Paillier, "Public-Key Cryptosystems Based on Composite Degree Residuosity Classes" (1999)
-3. I. Damgård, M. Geisler, M. Krøigaard, "Homomorphic encryption and secure comparison" (2008)
-
-
+Примечание: Это учебная реализация. Для использования в продакшене требуется дополнительное укрепление безопасности и оптимизация производительности.
